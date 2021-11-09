@@ -9,7 +9,7 @@ describe('popover', () => {
 
   beforeAll(async () => {
     browser = await puppetteer.launch({
-      headless: true,
+      headless: false,
       slowMo: 100,
       devtools: true,
     });
