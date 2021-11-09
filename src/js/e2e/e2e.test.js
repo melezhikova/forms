@@ -1,12 +1,12 @@
-// import demo from '../app';
-
 import puppetteer from 'puppeteer';
 
 jest.setTimeout(30000);
+
 describe('popover', () => {
   let browser = null;
   let page = null;
-  const baseUrl = 'http://localhost:9000';
+  const baseUrl = 'http://localhost:8080';
+
   beforeAll(async () => {
     browser = await puppetteer.launch({
       headless: false,
@@ -15,16 +15,15 @@ describe('popover', () => {
     });
     page = await browser.newPage();
   });
+
   afterAll(async () => {
     await browser.close();
   });
 
-  describe('popover', () => {
-    test('should add .popover class in DOM', async () => {
-      await page.goto(baseUrl);
-      const button = await page.$('.btn');
-      button.click();
-      await page.waitForSelector('.popover');
-    });
+  test('should add .popover class in DOM', async () => {
+    await page.goto(baseUrl);
+    const button = await page.$('.btn');
+    button.click();
+    await page.waitForSelector('.popover');
   });
 });
